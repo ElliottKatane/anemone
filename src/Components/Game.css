@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+}
+
+.score-container {
+  flex: 1;
+  margin-right: 20px; /* Adjust the margin as needed */
+  border: 1px solid #efefef;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.erroneousVerbs-container {
+  flex: 1;
+  border: 1px solid #efefef;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.hardmode-container {
+  font-size: 18px;
+  flex: 0.3;
+  margin-left: 20px; /* Adjust the margin as needed */
+  border: 1px solid #efefef;
+  border-radius: 7px;
+  width: 2vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submitBtn {
+  border-radius: 5px;
+  height: 5vh;
+  width: 5vw;
+  color: blue;
+  background-color: bisque;
+}

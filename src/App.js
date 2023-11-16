@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"; // Use Routes, not BrowserRouter as Routes
 
-function App() {
+//pages
+import StatsVerbesA from "./pages/StatsVerbesA";
+import PageJeu from "./pages/PageJeu";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Page404 from "./pages/Page404.js";
+import PersonalStatsPage from "./pages/PersonalStatsPage";
+
+//Contextes
+import { useAuthContext } from "./hooks/useAuthContext";
+
+const App = () => {
+  const { user } = useAuthContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/stats" element={<StatsVerbesA />} />
+        <Route
+          path="/litterature"
+          element={user ? <PageJeu /> : <Navigate to="/login" />}
+        />
+        <Route path="/about" element={<About />} />
+        <Route
+          path="/personalstats"
+          element={user ? <PersonalStatsPage /> : <Navigate to="/login" />}
+        />
+        <Route path="*" element={<Page404 />} />
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/signup"
+          element={!user ? <Signup /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,13 @@
+.about-container {
+  width: 50vw;
+  text-align: justify;
+  font-size: 16px;
+  margin: 0 auto; /* Center horizontally */
+  padding: 30px;
+}
+
+.paragraph {
+  background-color: bisque;
+  margin-bottom: 20px; /* Add space between paragraph containers */
+  padding: 15px; /* Add padding within each paragraph container */
+}
