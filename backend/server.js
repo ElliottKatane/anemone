@@ -39,6 +39,11 @@ mongoose
     console.log("MongoDB connection error", error);
   });
 
+// on essaye de dire bonjour
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
+
 app.on("error", (err) => {
   console.error("Express server error:", err);
 });
