@@ -7,7 +7,7 @@
       "dest": "/api/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "/(?!(api)).*",
       "dest": "/index.html"
     }
   ]
