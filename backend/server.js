@@ -27,6 +27,11 @@ app.use(express.static("public")); // Serve static files from the 'public' folde
 app.use("/api/user", userRoutes);
 app.use("/api/verbs", verbRoutes);
 
+// on essaye de dire bonjour
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
@@ -38,11 +43,6 @@ mongoose
   .catch((error) => {
     console.log("MongoDB connection error", error);
   });
-
-// on essaye de dire bonjour
-app.get("/", (req, res) => {
-  res.json("Hello");
-});
 
 app.on("error", (err) => {
   console.error("Express server error:", err);
