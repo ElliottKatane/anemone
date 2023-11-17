@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 // routes import
 // Importez vos routes
 const userRoutes = require(path.join(__dirname, "api", "routes", "userRoutes"));
