@@ -4,8 +4,18 @@ const mongoose = require("mongoose");
 const path = require("path");
 // routes import
 // Importez vos routes
-const userRoutes = require(path.join(__dirname, "api", "routes", "userRoutes"));
-const verbRoutes = require(path.join(__dirname, "api", "routes", "verbRoutes"));
+const userRoutes = require(path.join(
+  __dirname,
+  "backend",
+  "routes",
+  "userRoutes"
+));
+const verbRoutes = require(path.join(
+  __dirname,
+  "backend",
+  "routes",
+  "verbRoutes"
+));
 //express app
 const app = express();
 
