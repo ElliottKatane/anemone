@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 // routes import
-const userRoutes = require("./routes/userRoute");
-const verbRoutes = require("./routes/verbRoute");
+// Importez vos routes
+const userRoutes = require(path.join(__dirname, "api", "routes", "userRoutes"));
+const verbRoutes = require(path.join(__dirname, "api", "routes", "verbRoutes"));
 //express app
 const app = express();
 
@@ -37,7 +38,12 @@ app.get("/test", (req, res) => {
 });
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
   .then(() => {
     // listen for requests
     app.listen(process.env.PORT, () => {

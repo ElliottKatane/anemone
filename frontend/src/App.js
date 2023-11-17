@@ -18,7 +18,7 @@ const App = () => {
   const { user } = useAuthContext();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/stats" element={<StatsVerbesA />} />
         <Route
