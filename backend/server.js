@@ -28,8 +28,12 @@ app.use("/api/user", userRoutes);
 app.use("/api/verbs", verbRoutes);
 
 // on essaye de dire bonjour
-app.get("/", (req, res) => {
+app.get("/blob", (req, res) => {
   res.json("Hello");
+});
+// test route
+app.get("/test", (req, res) => {
+  res.send("Test route works!");
 });
 
 mongoose
