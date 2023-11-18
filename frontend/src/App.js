@@ -21,10 +21,7 @@ const App = () => {
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/stats" element={<StatsVerbesA />} />
-        <Route
-          path="/litterature"
-          element={user ? <PageJeu /> : <Navigate to="/login" />}
-        />
+        <Route path="/litterature" element={<PageJeu />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/personalstats"

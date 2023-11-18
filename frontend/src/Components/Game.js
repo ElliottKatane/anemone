@@ -25,22 +25,22 @@ const Game = () => {
   const { user } = useContext(AuthContext);
 
   // Récupération de la liste des verbes découverts au début de chaque partie
-  useEffect(() => {
-    // Charger la liste des verbes découverts au chargement du jeu
-    if (user) {
-      getUserProfile(user.email)
-        .then((profileData) => {
-          setDiscoveredVerbs(profileData.discoveredVerbs);
-          console.log(
-            "profileData.discoveredVerbs",
-            profileData.discoveredVerbs
-          );
-        })
-        .catch((error) => {
-          console.error("Error fetching user profile data:", error);
-        });
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   // Charger la liste des verbes découverts au chargement du jeu
+  //   if (user) {
+  //     getUserProfile(user.email)
+  //       .then((profileData) => {
+  //         setDiscoveredVerbs(profileData.discoveredVerbs);
+  //         console.log(
+  //           "profileData.discoveredVerbs",
+  //           profileData.discoveredVerbs
+  //         );
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching user profile data:", error);
+  //       });
+  //   }
+  // }, [user]);
 
   // array 2e lettre
   /*1*/ const arrayDeuxiemeLettre = useMemo(() => {
@@ -62,23 +62,23 @@ const Game = () => {
 
       // Combinez les verbes découverts précédemment avec les nouveaux verbes uniques
       const updatedVerbs = [...discoveredVerbs, ...uniqueNewVerbs];
-      updateUserDiscoveredVerbs(user.email, updatedVerbs);
+      // updateUserDiscoveredVerbs(user.email, updatedVerbs);
     }
     alert("Partie terminée. Votre score est de : " + score);
     // Fetch the user's profile data first
-    getUserProfile(user.email)
-      .then((profileData) => {
-        if (score > profileData.scoreMax) {
-          // The current score is higher than the previous max score
-          updateUserScoreMax(user.email, score);
+    // getUserProfile(user.email)
+    //   .then((profileData) => {
+    //     if (score > profileData.scoreMax) {
+    //       // The current score is higher than the previous max score
+    //       updateUserScoreMax(user.email, score);
 
-          // Send a special congratulatory message
-          alert("Félicitations ! Vous avez battu votre meilleur score !");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching user profile:", error);
-      });
+    //       // Send a special congratulatory message
+    //       alert("Félicitations ! Vous avez battu votre meilleur score !");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching user profile:", error);
+    //   });
 
     // Reset the game state
     setVerbsFound([]);
@@ -112,15 +112,15 @@ const Game = () => {
           setErrorMessage(""); // Reset du message d'erreur.
           setFiveInARow(fiveInARow + 1); // +1 au compteur de "5 à la suite" qui déclenche le hardMode
 
-          if (isNewVerb) {
-            updateUserDiscoveredVerbs(user.email, [
-              ...discoveredVerbs,
-              verbInput,
-            ]);
-            console.log(
-              "c'est là que j'ajoute le verbe découvert: " + verbInput
-            );
-          }
+          // if (isNewVerb) {
+          //   updateUserDiscoveredVerbs(user.email, [
+          //     ...discoveredVerbs,
+          //     verbInput,
+          //   ]);
+          //   console.log(
+          //     "c'est là que j'ajoute le verbe découvert: " + verbInput
+          //   );
+          // }
           if (hardMode) {
             const availableLetters = secondLettersAvailable.filter(
               (letter) => letter !== secondLetter
@@ -211,8 +211,11 @@ const Game = () => {
           <h2>Verbes trouvés:</h2>
           {hardMode ? (
             <div className="hardmode-container">
-              <p>Mode difficile : Imposer la deuxième lettre: {secondLetter}</p>
               <AnimatedWord word={word} />
+              <h3>
+                2e lettre imposée:{" "}
+                <span className="hardmode-letter">{secondLetter}</span>
+              </h3>
             </div>
           ) : (
             <p>A 5, déclenchez le HardMode : {fiveInARow}</p>

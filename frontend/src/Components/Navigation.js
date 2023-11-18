@@ -13,7 +13,7 @@ const Navigation = () => {
     logout();
   };
 
-  let disabled = false;
+  let disabled = true;
   return (
     <header>
       <div className="nav">
@@ -36,8 +36,12 @@ const Navigation = () => {
           )}
           {!user && (
             <div>
-              <Link to="/login">S'identifier</Link>
-              <Link to="/signup">S'enregistrer</Link>
+              <Link to={disabled ? "#" : "/login"}>
+                {disabled ? "Login (désactivé)" : "Login"}
+              </Link>
+              <Link to={disabled ? "#" : "/signup"}>
+                {disabled ? "Sign up (désactivé)" : "Signup	"}
+              </Link>
             </div>
           )}
           <Link to="/litterature">Jeu</Link>
