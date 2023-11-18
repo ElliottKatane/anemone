@@ -7,6 +7,8 @@ import {
   getUserProfile,
 } from "../hooks/userUtils";
 import "./Game.css";
+import { motion } from "framer-motion";
+import AnimatedWord from "./AnimatedWord";
 
 const Game = () => {
   // les states
@@ -187,40 +189,70 @@ const Game = () => {
     }
   }, [score, hardMode, arrayDeuxiemeLettre, fiveInARow]);
 
+  // pour HardMode coloré.
+  const word = "HARDMODE";
+
   return (
     <div className="container">
-      <div className="score-container">
-        <h2>Score: {score}</h2>
-        <h2>Erreurs: {errorCount}</h2>
-        <h2>Verbes trouvés:</h2>
-        {hardMode && (
-          <p>Mode difficile : Imposer la deuxième lettre: {secondLetter}</p>
-        )}
-        <p>A 5, déclenchez le HardMode : {fiveInARow}</p>
-        <ul>
-          {verbsFound.map((verb, index) => (
-            <li key={index}>
-              {" "}
-              {/* le verbe découvert est déjà dans la liste discoveredVerbs ? on l'affiche simplement. Sinon on ajoute "Nouveau!" à côté */}
-              {discoveredVerbs.includes(verb) ? verb : `${verb} (Nouveau !)`}
-            </li>
-          ))}
-        </ul>
+      <div className="submitInput-container">
+        {/* Bouton de soumission et input */}
         <form onSubmit={handleVerbSubmission}>
-          <input type="text" name="verbInput" />
-          <button type="submit" className="submitBtn">
+          <input type="text" name="verbInput" className="submitInput" />
+          <button type="submit" className="submit-btn">
             Soumettre
           </button>
         </form>
-        <p className="error">{errorMessage}</p>
       </div>
-      <div className="erroneousVerbs-container">
-        <h2>Erreurs:</h2>
-        <ul>
-          {erroneousVerbs.map((verb, index) => (
-            <li key={index}>{verb}</li>
-          ))}
-        </ul>
+
+      <div className="container-score-et-erreurs">
+        <div className="score-container">
+          <h2>Score: {score}</h2>
+          <h2>Erreurs: {errorCount}</h2>
+          <h2>Verbes trouvés:</h2>
+          {hardMode ? (
+            <div className="hardmode-container">
+              <p>Mode difficile : Imposer la deuxième lettre: {secondLetter}</p>
+              <AnimatedWord word={word} />
+            </div>
+          ) : (
+            <p>A 5, déclenchez le HardMode : {fiveInARow}</p>
+          )}
+          <ul>
+            {verbsFound.map((verb, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                exit={{ opacity: 0, x: 20 }}
+                variants={{
+                  normal: { opacity: 1, x: 0 },
+                  new: { opacity: 1, x: 0, color: "green", fontWeight: "bold" },
+                }}
+                animate={discoveredVerbs.includes(verb) ? "normal" : "new"}
+              >
+                {/* le verbe découvert est déjà dans la liste discoveredVerbs ? on l'affiche simplement. Sinon on ajoute "Nouveau!" à côté */}
+                {discoveredVerbs.includes(verb) ? verb : `${verb} (Nouveau !)`}
+              </motion.li>
+            ))}
+          </ul>
+
+          <p className="error">{errorMessage}</p>
+        </div>
+        <div className="erroneousVerbs-container">
+          {/* Mapping de erroneousVerbs */}
+          <h2>Erreurs:</h2>
+          <ul>
+            {erroneousVerbs.map((verb, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+              >
+                {verb}
+              </motion.li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

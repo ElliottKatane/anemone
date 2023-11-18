@@ -10,17 +10,21 @@ const About = () => {
       <div className="about-container">
         <div className="paragraph">
           <p>
-            « littérature » : projet personnel partant d’une idée simple : jouer
+            « Anemone » : projet personnel partant d’une idée simple : jouer
             avec les mots. Le but est de trouver le maximum de verbes commençant
-            par la lettre A. C’est un petit jeu qui nous avait été proposé à
-            l'école, lorsque j’avais 8 ans. Mon esprit obsessionnel avait adoré
-            cette épreuve et, souvent, j’y repensais : quels nouveaux verbes
-            commençant par A connais-je ? 27 ans plus tard, désormais en
-            reconversion en développement web, j’ai transposé cette idée dans
-            une application React.
+            par la lettre A. C’est un petit défi qui nous avait été proposé à
+            l'école, lorsque j’avais 8 ans. C'est à mon tour de vous le proposer
+            ! Combien de verbes commençant par la lettre A connaissez-vous ?
           </p>
         </div>
-
+        <div className="paragraph">
+          <p>
+            Le projet est réalisé avec la stack MERN (MongoDB, Express, React,
+            NodeJS)
+          </p>
+          Le système d'authentification est réalisé avec JWT. Les mots de passe
+          sont hashés avec bcrypt.
+        </div>
         <div className="paragraph">
           <div>
             Pour la logique du jeu, j’ai principalement utilisé useState,
@@ -29,10 +33,22 @@ const About = () => {
               Concernant les statistiques, j’ai utilisé reduce, substring, et
               map pour extraire les données présentes sur la page.
               <div>
-                Navigation : BrowserRoute, Routes, Route, NavLink CSS classique
+                Navigation : BrowserRoute, Routes, Route, NavLink, CSS classique
               </div>
             </p>
           </div>
+        </div>
+        <div className="paragraph">
+          <p>
+            L'onglet "Solutionnaire" détaille la liste des{" "}
+            <a href="http://verbe.mobi/verbes-commencant-par-A">
+              {" "}
+              882 verbes commençant par la lettre A en Français.
+            </a>
+            Vous trouverez le nombre de verbes par nombre de lettres, ainsi que
+            la liste des verbes classés par leur première lettre après le "a".
+          </p>
+          <p>Méthodes utilisées : map, reduce, substring, push.</p>
         </div>
       </div>
     </div>

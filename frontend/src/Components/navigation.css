@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+header {
+  background-color: #fff;
+  padding: 15px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* navbar */
+nav {
+  display: flex;
+  align-items: center;
+  background: transparent;
+}
+nav a {
+  margin-left: 10px;
+}
+/* left and right sections */
+.left-section a {
+  color: #1aac83;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.right-section div {
+  display: flex;
+  align-items: center;
+}
+
+.right-section span {
+  margin-right: 10px;
+}
+
+.right-section a {
+  margin-left: 15px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #1aac83;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.right-section a:hover {
+  background-color: rgb(14, 231, 169);
+}
+
+/* Style supplémentaire pour les liens au survol */
+.right-section a:hover {
+  border-bottom: 2px solid #fff;
+}
+.logout-btn:hover {
+  border-color: rgb(233, 159, 159);
+}

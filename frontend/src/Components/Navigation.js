@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
+import "./navigation.css";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -12,18 +13,25 @@ const Navigation = () => {
     logout();
   };
 
+  let disabled = false;
   return (
     <header>
       <div className="nav">
-        <Link to="/">
-          <h1>Home</h1>
-        </Link>
-        <nav>
+        <div className="left-section">
+          <Link to="/">
+            <h1>Home</h1>
+          </Link>
+        </div>
+        <nav className="right-section">
           {user && (
             <div>
               <span>{user.email}</span>
-              <button onClick={handleClick}>Log out</button>
-              <Link to="/personalstats">Mes stats</Link>
+              <button className="logout-btn" onClick={handleClick}>
+                Log out
+              </button>
+              <Link to={disabled ? "#" : "/personalstats"}>
+                {disabled ? "Mes stats (désactivé)" : "Mes stats"}
+              </Link>
             </div>
           )}
           {!user && (
@@ -33,7 +41,7 @@ const Navigation = () => {
             </div>
           )}
           <Link to="/litterature">Jeu</Link>
-          <Link to="/stats">Stats</Link>
+          <Link to="/stats">Solutionnaire</Link>
           <Link to="/about">A propos</Link>
         </nav>
       </div>

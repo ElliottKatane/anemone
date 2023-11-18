@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
+import "./login.css";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="signup">
+    <form onSubmit={handleSubmit} className="login">
       <h3>S'enregistrer</h3>
       <label>Email</label>
       {/* e.target.value :
@@ -32,6 +33,9 @@ const Signup = () => {
       />
       {/* disabled={isLoading} parce qu'on ne veut pas envoyer de nouvelle requête tant qu'il y a le chargement d'une autre */}
       <button disabled={isLoading}>Signup</button>
+      <p>
+        Vous avez déjà un compte ? <a href="/login">Identifiez-vous</a>
+      </p>
       {error && <div className="error">{error}</div>}
     </form>
   );
