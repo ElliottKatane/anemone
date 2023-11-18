@@ -14,11 +14,16 @@ app.use(express.json());
 
 require("dotenv").config({ path: "./config.env" });
 // require("dotenv").config();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://anemone-alpha.vercel.app",
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 // ejs
 app.set("view engine", "ejs"); // Set EJS as the view engine
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public")); // Serve static files from the 'public' folder
 
 //routes
