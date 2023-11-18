@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useMemo, useContext } from "react";
 import VerbesEnA from "../verbes/VerbesEnA";
 import { AuthContext } from "../context/AuthContext";
-import {
-  updateUserScoreMax,
-  updateUserDiscoveredVerbs,
-  getUserProfile,
-} from "../hooks/userUtils";
+
 import "./Game.css";
 import { motion } from "framer-motion";
 import AnimatedWord from "./AnimatedWord";
@@ -52,18 +48,18 @@ const Game = () => {
   // Gérer la fin du jeu :
   const handleEndOfGame = () => {
     // Mettre à jour la liste des verbes découverts à la fin du jeu
-    if (user) {
-      // Utiliser un ensemble pour garantir l'unicité des verbes
-      const uniqueNewVerbsSet = new Set(
-        verbsFound.filter((verb) => !discoveredVerbs.includes(verb))
-      );
-      // On convertir le set en tableau
-      const uniqueNewVerbs = [...uniqueNewVerbsSet];
+    // if (user) {
+    // Utiliser un ensemble pour garantir l'unicité des verbes
+    const uniqueNewVerbsSet = new Set(
+      verbsFound.filter((verb) => !discoveredVerbs.includes(verb))
+    );
+    // On convertir le set en tableau
+    const uniqueNewVerbs = [...uniqueNewVerbsSet];
 
-      // Combinez les verbes découverts précédemment avec les nouveaux verbes uniques
-      const updatedVerbs = [...discoveredVerbs, ...uniqueNewVerbs];
-      // updateUserDiscoveredVerbs(user.email, updatedVerbs);
-    }
+    // Combinez les verbes découverts précédemment avec les nouveaux verbes uniques
+    const updatedVerbs = [...discoveredVerbs, ...uniqueNewVerbs];
+    // updateUserDiscoveredVerbs(user.email, updatedVerbs);
+    // }
     alert("Partie terminée. Votre score est de : " + score);
     // Fetch the user's profile data first
     // getUserProfile(user.email)
@@ -154,7 +150,8 @@ const Game = () => {
       setErrorCount((prevCount) => prevCount + 1); // erreur +1
 
       // FIN DU JEU - RESET DU SCORE qu'on envoie à la base de données
-      if (errorCount >= 4 && user) {
+      // if (errorCount >= 4 && user) {
+      if (errorCount >= 4) {
         handleEndOfGame();
       }
       // Sinon, si le verbe est incorrect et n'est pas dans la liste des verbes erronés
