@@ -45,5 +45,7 @@
   color: #1aac83;
 }
 .hardmode-container {
-  font-size: 18px;
+  font-size: 20px;
+  display: flex;
+  gap: 10px;
 }

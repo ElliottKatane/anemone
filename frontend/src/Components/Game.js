@@ -187,17 +187,30 @@ const Game = () => {
   }, [score, hardMode, arrayDeuxiemeLettre, fiveInARow]);
 
   // pour HardMode coloré.
-  const word = "HARDMODE";
+  const word = "HARDMODE ON !";
+  const phrase = "Deuxième lettre imposée: ";
 
   return (
     <div className="container">
       <div className="submitInput-container">
+        Entrez un verbe
         {/* Bouton de soumission et input */}
         <form onSubmit={handleVerbSubmission}>
           <input type="text" name="verbInput" className="submitInput" />
           <button type="submit" className="submit-btn">
             Soumettre
           </button>
+          {hardMode ? (
+            <div className="hardmode-container">
+              <AnimatedWord word={word} />
+              <AnimatedWord word={phrase} />
+              <span className="hardmode-letter">
+                {secondLetter.toUpperCase()}
+              </span>
+            </div>
+          ) : (
+            <p>A 5, déclenchez le HardMode : {fiveInARow}</p>
+          )}
         </form>
       </div>
 
@@ -206,17 +219,7 @@ const Game = () => {
           <h2>Score: {score}</h2>
           <h2>Erreurs: {errorCount}</h2>
           <h2>Verbes trouvés:</h2>
-          {hardMode ? (
-            <div className="hardmode-container">
-              <AnimatedWord word={word} />
-              <h3>
-                2e lettre imposée:{" "}
-                <span className="hardmode-letter">{secondLetter}</span>
-              </h3>
-            </div>
-          ) : (
-            <p>A 5, déclenchez le HardMode : {fiveInARow}</p>
-          )}
+
           <ul>
             {verbsFound.map((verb, index) => (
               <motion.li
