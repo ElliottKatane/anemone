@@ -14,12 +14,8 @@ const About = () => {
             « Anemone » : projet personnel partant d’une idée simple : jouer
             avec les mots. Le but est de trouver le maximum de verbes commençant
             par la lettre A. C’est un petit défi qui nous avait été proposé à
-            l'école, lorsque j’avais 8 ans. C'est à mon tour de vous le proposer
-            ! Combien de verbes commençant par la lettre A connaissez-vous ?
-            Pourquoi Anemone ? Le projet pourrait évoluer vers un jeu de
-            "collection" de verbes et de conjugaison. La sonorité du mot
-            rappelle celui de "Pokemon", un jeu de collection de monstres de
-            poche...
+            l'école, plus jeune. C'est à mon tour de vous le proposer ! Combien
+            de verbes commençant par la lettre A connaissez-vous ?
           </p>
         </div>
         <div className="paragraph">
