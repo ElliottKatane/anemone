@@ -88,7 +88,8 @@ const Game = () => {
   const handleVerbSubmission = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior.
 
-    const verbInput = event.target.verbInput.value.toLowerCase(); // Get the input value.
+    // Récupérer le verbe saisi par l'utilisateur en minuscule et sans espace inutile.
+    const verbInput = event.target.verbInput.value.trim().toLowerCase();
     // Vérifier si le verbe est découvert
     const isNewVerb = !discoveredVerbs.includes(verbInput);
 
