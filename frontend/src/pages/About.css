@@ -15,3 +15,10 @@
   margin-bottom: 20px; /* Add space between paragraph containers */
   padding: 15px; /* Add padding within each paragraph container */
 }
+
+.about-author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}

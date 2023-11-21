@@ -6,7 +6,9 @@ const About = () => {
   return (
     <div>
       <Navigation />
-
+      <div className="about-author">
+        <a href="mailto:contact@elliottkatane.com"> Contactez-moi</a>
+      </div>
       <div className="about-container">
         <div className="paragraph">
           <h3>Qu'est-ce qu'Anemone ?</h3>
