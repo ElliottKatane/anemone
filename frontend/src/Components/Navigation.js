@@ -28,13 +28,13 @@ const Navigation = () => {
               <button className="logout-btn" onClick={handleClick}>
                 Log out
               </button>
-              <Link to="/personalstats"></Link>
+              <Link to="/personalstats">Mes stats</Link>
             </div>
           )}
           {!user && (
             <div>
-              <Link to="/login"></Link>
-              <Link to="/signup"></Link>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Signup</Link>
             </div>
           )}
           <Link to="/litterature">Jeu</Link>

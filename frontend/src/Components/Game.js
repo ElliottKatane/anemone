@@ -4,7 +4,11 @@ import { AuthContext } from "../context/AuthContext";
 import "./Game.css";
 import { motion } from "framer-motion";
 import AnimatedWord from "./AnimatedWord";
-
+import {
+  getUserProfile,
+  updateUserDiscoveredVerbs,
+  updateUserScoreMax,
+} from "../hooks/userUtils";
 const Game = () => {
   // les states
   const [errorCount, setErrorCount] = useState(0); // Compteur d'erreurs
