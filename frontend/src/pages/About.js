@@ -54,6 +54,15 @@ const About = () => {
           </p>
           <p>Méthodes utilisées : map, reduce, substring, push.</p>
         </div>
+        <div className="paragraph">
+          <p>
+            <h3>Formulaire de contact</h3>
+            <p>
+              Le formulaire a été réalisé avec React Hook Form, emailJS,
+              Toastify.
+            </p>
+          </p>
+        </div>
       </div>
     </div>
   );

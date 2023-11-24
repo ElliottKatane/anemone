@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./contact.css";
 const Contact = () => {
   const {
     register,
@@ -74,7 +75,7 @@ const Contact = () => {
                       message: "Moins de 30 caractères svp",
                     },
                   })}
-                  placeholder="Name"
+                  placeholder="Votre nom"
                 ></input>
                 {errors.name && (
                   <span className="errorMessage">{errors.name.message}</span>
@@ -89,7 +90,7 @@ const Contact = () => {
                     pattern:
                       /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                   })}
-                  placeholder="Email address"
+                  placeholder="Adresse e-mail"
                 ></input>
                 {errors.email && (
                   <span className="errorMessage">
@@ -113,7 +114,7 @@ const Contact = () => {
                     message: "Ne peut excéder 75 caractères",
                   },
                 })}
-                placeholder="Subject"
+                placeholder="Objet de votre message"
               ></input>
               {errors.subject && (
                 <span className="errorMessage">{errors.subject.message}</span>
@@ -129,7 +130,7 @@ const Contact = () => {
                   {...register("message", {
                     required: true,
                   })}
-                  placeholder="Message"
+                  placeholder="Faites-moi part de vos questions ou commentaires"
                 ></textarea>
                 {errors.message && (
                   <span className="errorMessage">Please enter a message</span>

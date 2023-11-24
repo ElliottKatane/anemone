@@ -1,0 +1,50 @@
+.ContactForm {
+  display: flex;
+  width: 50vw;
+  text-align: justify;
+  font-size: 16px;
+  margin: 0 auto; /* Center horizontally */
+  padding: 30px;
+  line-height: 2rem;
+  font-size: 18px;
+  border-radius: 7px;
+  color: #121212;
+  background-color: rgb(26, 173, 131, 0.1);
+  margin-bottom: 20px; /* Add space between paragraph containers */
+}
+.ContactForm .container {
+  width: 100%; /* le conteneur prend tout l'espace de la boite */
+}
+
+/* Répétition obligatoire sinon le CSS s'étend à d'autres composants, même s'ils ne sont pas dans "ContactForm" */
+.ContactForm input,
+.ContactForm textarea,
+.ContactForm button {
+  margin: 10px auto;
+  padding: 1vh 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  box-sizing: border-box;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+.submit-btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #1aac83;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.submit-btn:hover {
+  background-color: rgb(14, 231, 169);
+}

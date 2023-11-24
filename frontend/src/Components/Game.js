@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo, useContext } from "react";
 import VerbesEnA from "../verbes/VerbesEnA";
 import { AuthContext } from "../context/AuthContext";
-
 import "./Game.css";
 import { motion } from "framer-motion";
 import AnimatedWord from "./AnimatedWord";
