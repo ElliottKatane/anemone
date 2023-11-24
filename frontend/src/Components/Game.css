@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.container-score-et-erreurs {
+  display: flex;
+  margin: 20px;
+}
+
+.score-container,
+.erroneousVerbs-container {
+  margin: 50px;
+  flex: 1;
+  border: 1px solid #efefef;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submitInput-container {
+  flex: 1;
+  text-align: center; /* Center form */
+  margin-bottom: 30px;
+}
+.submitInput {
+  min-width: 15rem;
+  width: 20vw;
+  max-height: 2.5rem;
+  background-color: rgb(26, 171, 130, 0.2);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  align-self: center;
+  margin: 15px; /* Add space between submit button and input */
+}
+.submit-btn {
+  background-color: #1aac83;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.new-verb {
+  color: #1aac83;
+}
+.hardmode-container {
+  font-size: 20px;
+  display: flex;
+  gap: 10px;
+}

@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Page404 from "./pages/Page404.js";
+import Contact from "./pages/Contact";
 import PersonalStatsPage from "./pages/PersonalStatsPage";
 
 //Contextes
@@ -18,13 +19,10 @@ const App = () => {
   const { user } = useAuthContext();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/stats" element={<StatsVerbesA />} />
-        <Route
-          path="/litterature"
-          element={user ? <PageJeu /> : <Navigate to="/login" />}
-        />
+        <Route path="/litterature" element={<PageJeu />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/personalstats"
@@ -40,6 +38,7 @@ const App = () => {
           path="/signup"
           element={!user ? <Signup /> : <Navigate to="/" />}
         />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );

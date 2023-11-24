@@ -1,21 +1,23 @@
 import React from "react";
 import { useState } from "react";
-import { useLogin } from "../hooks/useLogin";
-// import "../index.css";
-const Login = () => {
+import { useSignup } from "../hooks/useSignup";
+import "./login.css";
+
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useLogin();
-
+  const { signup, error, isLoading } = useSignup();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
+    await signup(email, password);
   };
 
   return (
     <form onSubmit={handleSubmit} className="login">
-      <h3>S'identifier</h3>
+      <h3>S'enregistrer</h3>
       <label>Email</label>
+      {/* e.target.value :
+    e est l'event. target est l'input. value est la valeur de ce qui est rentré par l'user */}
       <input
         type="email"
         onChange={(e) => setEmail(e.target.value)}
@@ -29,15 +31,14 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <button disabled={isLoading}> Login</button>
+      {/* disabled={isLoading} parce qu'on ne veut pas envoyer de nouvelle requête tant qu'il y a le chargement d'une autre */}
+      <button disabled={isLoading}>Signup</button>
+      <p>
+        Vous avez déjà un compte ? <a href="/login">Identifiez-vous</a>
+      </p>
       {error && <div className="error">{error}</div>}
-      <div>
-        <p>
-          Vous n'avez pas de compte ? <a href="/signup">Créer un compte</a>
-        </p>
-      </div>
     </form>
   );
 };
 
-export default Login;
+export default Signup;

@@ -1,8 +1,7 @@
 import React from "react";
-import Game from "../Components/Game";
 import Navigation from "../Components/Navigation";
-import "./PageJeu.css";
-const PageJeu = () => {
+import "./home.css";
+const Home = () => {
   return (
     <div>
       <Navigation />
@@ -13,17 +12,18 @@ const PageJeu = () => {
         <h4>
           Hard mode : lorsque 5 verbes sont trouvés, le hardMode est activé:
           <h4>
-            la deuxième lettre est alors imposée. Il se désactive lorsque le
-            joueur fait une erreur.
+            la deuxième lettre est alors imposée. Il se désactive lorsqu'une
+            erreur est commise.
           </h4>
         </h4>
         <h4>Le jeu s'arrête lorsque vous atteignez 5 erreurs.</h4>
-        <h5>Pas de particule pronominale (se, s')</h5>
-        <h5>Les accents comptent : é è ê â</h5>
+        <h5>
+          Pas de particule pronominale (s') et les accents (é è ê â) comptent.
+        </h5>
+        <h5>Non sensible à la casse.</h5>
       </div>
-      <Game />
     </div>
   );
 };
 
-export default PageJeu;
+export default Home;

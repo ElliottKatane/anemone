@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useMemo, useContext } from "react";
 import VerbesEnA from "../verbes/VerbesEnA";
 import { AuthContext } from "../context/AuthContext";
-import {
-  updateUserScoreMax,
-  updateUserDiscoveredVerbs,
-  getUserProfile,
-} from "../hooks/userUtils";
 import "./Game.css";
+import { motion } from "framer-motion";
+import AnimatedWord from "./AnimatedWord";
 
 const Game = () => {
   // les states
@@ -23,22 +20,22 @@ const Game = () => {
   const { user } = useContext(AuthContext);
 
   // Récupération de la liste des verbes découverts au début de chaque partie
-  useEffect(() => {
-    // Charger la liste des verbes découverts au chargement du jeu
-    if (user) {
-      getUserProfile(user.email)
-        .then((profileData) => {
-          setDiscoveredVerbs(profileData.discoveredVerbs);
-          console.log(
-            "profileData.discoveredVerbs",
-            profileData.discoveredVerbs
-          );
-        })
-        .catch((error) => {
-          console.error("Error fetching user profile data:", error);
-        });
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   // Charger la liste des verbes découverts au chargement du jeu
+  //   if (user) {
+  //     getUserProfile(user.email)
+  //       .then((profileData) => {
+  //         setDiscoveredVerbs(profileData.discoveredVerbs);
+  //         console.log(
+  //           "profileData.discoveredVerbs",
+  //           profileData.discoveredVerbs
+  //         );
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching user profile data:", error);
+  //       });
+  //   }
+  // }, [user]);
 
   // array 2e lettre
   /*1*/ const arrayDeuxiemeLettre = useMemo(() => {
@@ -50,33 +47,33 @@ const Game = () => {
   // Gérer la fin du jeu :
   const handleEndOfGame = () => {
     // Mettre à jour la liste des verbes découverts à la fin du jeu
-    if (user) {
-      // Utiliser un ensemble pour garantir l'unicité des verbes
-      const uniqueNewVerbsSet = new Set(
-        verbsFound.filter((verb) => !discoveredVerbs.includes(verb))
-      );
-      // On convertir le set en tableau
-      const uniqueNewVerbs = [...uniqueNewVerbsSet];
+    // if (user) {
+    // Utiliser un ensemble pour garantir l'unicité des verbes
+    const uniqueNewVerbsSet = new Set(
+      verbsFound.filter((verb) => !discoveredVerbs.includes(verb))
+    );
+    // On convertir le set en tableau
+    const uniqueNewVerbs = [...uniqueNewVerbsSet];
 
-      // Combinez les verbes découverts précédemment avec les nouveaux verbes uniques
-      const updatedVerbs = [...discoveredVerbs, ...uniqueNewVerbs];
-      updateUserDiscoveredVerbs(user.email, updatedVerbs);
-    }
+    // Combinez les verbes découverts précédemment avec les nouveaux verbes uniques
+    const updatedVerbs = [...discoveredVerbs, ...uniqueNewVerbs];
+    // updateUserDiscoveredVerbs(user.email, updatedVerbs);
+    // }
     alert("Partie terminée. Votre score est de : " + score);
     // Fetch the user's profile data first
-    getUserProfile(user.email)
-      .then((profileData) => {
-        if (score > profileData.scoreMax) {
-          // The current score is higher than the previous max score
-          updateUserScoreMax(user.email, score);
+    // getUserProfile(user.email)
+    //   .then((profileData) => {
+    //     if (score > profileData.scoreMax) {
+    //       // The current score is higher than the previous max score
+    //       updateUserScoreMax(user.email, score);
 
-          // Send a special congratulatory message
-          alert("Félicitations ! Vous avez battu votre meilleur score !");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching user profile:", error);
-      });
+    //       // Send a special congratulatory message
+    //       alert("Félicitations ! Vous avez battu votre meilleur score !");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching user profile:", error);
+    //   });
 
     // Reset the game state
     setVerbsFound([]);
@@ -90,7 +87,8 @@ const Game = () => {
   const handleVerbSubmission = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior.
 
-    const verbInput = event.target.verbInput.value.toLowerCase(); // Get the input value.
+    // Récupérer le verbe saisi par l'utilisateur en minuscule et sans espace inutile.
+    const verbInput = event.target.verbInput.value.trim().toLowerCase();
     // Vérifier si le verbe est découvert
     const isNewVerb = !discoveredVerbs.includes(verbInput);
 
@@ -110,15 +108,15 @@ const Game = () => {
           setErrorMessage(""); // Reset du message d'erreur.
           setFiveInARow(fiveInARow + 1); // +1 au compteur de "5 à la suite" qui déclenche le hardMode
 
-          if (isNewVerb) {
-            updateUserDiscoveredVerbs(user.email, [
-              ...discoveredVerbs,
-              verbInput,
-            ]);
-            console.log(
-              "c'est là que j'ajoute le verbe découvert: " + verbInput
-            );
-          }
+          // if (isNewVerb) {
+          //   updateUserDiscoveredVerbs(user.email, [
+          //     ...discoveredVerbs,
+          //     verbInput,
+          //   ]);
+          //   console.log(
+          //     "c'est là que j'ajoute le verbe découvert: " + verbInput
+          //   );
+          // }
           if (hardMode) {
             const availableLetters = secondLettersAvailable.filter(
               (letter) => letter !== secondLetter
@@ -152,7 +150,8 @@ const Game = () => {
       setErrorCount((prevCount) => prevCount + 1); // erreur +1
 
       // FIN DU JEU - RESET DU SCORE qu'on envoie à la base de données
-      if (errorCount >= 4 && user) {
+      // if (errorCount >= 4 && user) {
+      if (errorCount >= 4) {
         handleEndOfGame();
       }
       // Sinon, si le verbe est incorrect et n'est pas dans la liste des verbes erronés
@@ -187,40 +186,76 @@ const Game = () => {
     }
   }, [score, hardMode, arrayDeuxiemeLettre, fiveInARow]);
 
+  // pour HardMode coloré.
+  const word = "HARDMODE ON !";
+  const phrase = "Deuxième lettre imposée: ";
+
   return (
     <div className="container">
-      <div className="score-container">
-        <h2>Score: {score}</h2>
-        <h2>Erreurs: {errorCount}</h2>
-        <h2>Verbes trouvés:</h2>
-        {hardMode && (
-          <p>Mode difficile : Imposer la deuxième lettre: {secondLetter}</p>
-        )}
-        <p>A 5, déclenchez le HardMode : {fiveInARow}</p>
-        <ul>
-          {verbsFound.map((verb, index) => (
-            <li key={index}>
-              {" "}
-              {/* le verbe découvert est déjà dans la liste discoveredVerbs ? on l'affiche simplement. Sinon on ajoute "Nouveau!" à côté */}
-              {discoveredVerbs.includes(verb) ? verb : `${verb} (Nouveau !)`}
-            </li>
-          ))}
-        </ul>
+      <div className="submitInput-container">
+        Entrez un verbe
+        {/* Bouton de soumission et input */}
         <form onSubmit={handleVerbSubmission}>
-          <input type="text" name="verbInput" />
-          <button type="submit" className="submitBtn">
+          <input type="text" name="verbInput" className="submitInput" />
+          <button type="submit" className="submit-btn">
             Soumettre
           </button>
+          {hardMode ? (
+            <div className="hardmode-container">
+              <AnimatedWord word={word} />
+              <AnimatedWord word={phrase} />
+              <span className="hardmode-letter">
+                {secondLetter.toUpperCase()}
+              </span>
+            </div>
+          ) : (
+            <p>A 5, déclenchez le HardMode : {fiveInARow}</p>
+          )}
         </form>
-        <p className="error">{errorMessage}</p>
       </div>
-      <div className="erroneousVerbs-container">
-        <h2>Erreurs:</h2>
-        <ul>
-          {erroneousVerbs.map((verb, index) => (
-            <li key={index}>{verb}</li>
-          ))}
-        </ul>
+
+      <div className="container-score-et-erreurs">
+        <div className="score-container">
+          <h2>Score: {score}</h2>
+          <h2>Erreurs: {errorCount}</h2>
+          <h2>Verbes trouvés:</h2>
+
+          <ul>
+            {verbsFound.map((verb, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                exit={{ opacity: 0, x: 20 }}
+                variants={{
+                  normal: { opacity: 1, x: 0 },
+                  new: { opacity: 1, x: 0, color: "green", fontWeight: "bold" },
+                }}
+                animate={discoveredVerbs.includes(verb) ? "normal" : "new"}
+              >
+                {/* le verbe découvert est déjà dans la liste discoveredVerbs ? on l'affiche simplement. Sinon on ajoute "Nouveau!" à côté */}
+                {discoveredVerbs.includes(verb) ? verb : `${verb} (Nouveau !)`}
+              </motion.li>
+            ))}
+          </ul>
+
+          <p className="error">{errorMessage}</p>
+        </div>
+        <div className="erroneousVerbs-container">
+          {/* Mapping de erroneousVerbs */}
+          <h2>Erreurs:</h2>
+          <ul>
+            {erroneousVerbs.map((verb, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+              >
+                {verb}
+              </motion.li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
