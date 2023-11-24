@@ -15,7 +15,16 @@
 .ContactForm .container {
   width: 100%; /* le conteneur prend tout l'espace de la boite */
 }
-
+@media screen and (max-width: 768px) {
+  .ContactForm {
+    width: 100vw;
+  }
+  .ContactForm input,
+  .ContactForm textarea {
+    width: 100vw; /* Les champs prennent 100% de la largeur à 768px ou moins */
+    display: inline-block;
+  }
+}
 /* Répétition obligatoire sinon le CSS s'étend à d'autres composants, même s'ils ne sont pas dans "ContactForm" */
 .ContactForm input,
 .ContactForm textarea,
