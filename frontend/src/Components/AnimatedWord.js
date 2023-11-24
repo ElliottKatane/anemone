@@ -9,7 +9,7 @@ const AnimatedWord = ({ word }) => {
       setCurrentLetterIndex((prevIndex) =>
         prevIndex < word.length - 1 ? prevIndex + 1 : 0
       );
-    }, 100); // Interval de 100 millisecondes pour la transition rapide
+    }, 50); // Interval de 100 millisecondes pour la transition rapide
 
     return () => clearInterval(interval);
   }, [word]);
@@ -22,7 +22,7 @@ const AnimatedWord = ({ word }) => {
             key={index}
             initial={{ color: "black" }}
             animate={{
-              color: index === currentLetterIndex ? "green" : "black",
+              color: index === currentLetterIndex ? "black" : "#1aac83",
             }}
             exit={{ color: "black" }}
           >

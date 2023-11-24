@@ -187,8 +187,7 @@ const Game = () => {
   }, [score, hardMode, arrayDeuxiemeLettre, fiveInARow]);
 
   // pour HardMode coloré.
-  const word = "HARDMODE ON !";
-  const phrase = "Deuxième lettre imposée: ";
+  const phrase = "Mode Difficile activé";
 
   return (
     <div className="container">
@@ -202,10 +201,10 @@ const Game = () => {
           </button>
           {hardMode ? (
             <div className="hardmode-container">
-              <AnimatedWord word={word} />
               <AnimatedWord word={phrase} />
+              <br />
               <span className="hardmode-letter">
-                {secondLetter.toUpperCase()}
+                Les verbes doivent commencer par a{secondLetter.toLowerCase()}
               </span>
             </div>
           ) : (
