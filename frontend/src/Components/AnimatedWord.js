@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, animate } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 const AnimatedWord = ({ word }) => {

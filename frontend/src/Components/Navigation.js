@@ -37,8 +37,11 @@ const Navigation = () => {
               <Link to="/signup">Signup</Link>
             </div>
           )}
-          <Link to="/litterature">Jeu</Link>
+
+          {/* Utilisation de la ternaire pour les pages "Jeu" et "Solutionnaire" */}
+          <Link to={user ? "/litterature" : "/login"}>Jeu</Link>
           <Link to="/stats">Solutionnaire</Link>
+
           <Link to="/about">A propos</Link>
           <Link to="/contact">Contact</Link>
         </nav>
