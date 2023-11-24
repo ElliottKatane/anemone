@@ -6,9 +6,7 @@ const About = () => {
   return (
     <div>
       <Navigation />
-      <div className="about-author">
-        <a href="mailto:contact@elliottkatane.com"> Contactez-moi</a>
-      </div>
+
       <div className="about-container">
         <div className="paragraph">
           <h3>Qu'est-ce qu'Anemone ?</h3>
@@ -55,22 +53,6 @@ const About = () => {
             </p>
           </p>
           <p>Méthodes utilisées : map, reduce, substring, push.</p>
-        </div>
-        <div className="paragraph">
-          <h3>Pourquoi Login et Signup sont désactivés ?</h3>
-          <p>
-            Le déploiement sur Vercel de la partie backend avec Express a été
-            une vraie bataille... que je n'ai pas gagnée. J'ai donc décidé de
-            rendre le projet accessible malgré tout, en désactivant les parties
-            qui nécessitent l'accès à la base de données. J'ai également modifié
-            le code du jeu pour qu'ils fassent appel à un array de verbes stocké
-            en dur dans le code, plutôt qu'à la base de données.
-          </p>
-          <p>
-            Egalement désactivée : la page "Mes stats", sur laquelle vous pouvez
-            consulter les verbes déjà trouvés et votre plus haut score.
-            Nécessite d'être identifié pour fonctionner.
-          </p>
         </div>
       </div>
     </div>

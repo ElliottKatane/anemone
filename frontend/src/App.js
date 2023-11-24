@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Page404 from "./pages/Page404.js";
+import Contact from "./pages/Contact";
 import PersonalStatsPage from "./pages/PersonalStatsPage";
 
 //Contextes
@@ -37,6 +38,7 @@ const App = () => {
           path="/signup"
           element={!user ? <Signup /> : <Navigate to="/" />}
         />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );

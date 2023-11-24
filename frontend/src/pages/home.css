@@ -1,8 +1,13 @@
 .rules-container {
-  border: 2px solid #1aac83;
-  border-radius: 7px;
-  width: 60%;
-  margin: 1% auto;
-  padding: 1rem 5rem; /* Ajout de padding global */
+  width: 50vw;
   text-align: justify;
+  font-size: 16px;
+  margin: 0 auto; /* Center horizontally */
+  padding: 30px;
+  line-height: 2rem;
+  font-size: 18px;
+  border-radius: 7px;
+  color: #121212;
+  background-color: rgb(26, 173, 131, 0.1);
+  margin-bottom: 20px; /* Add space between paragraph containers */
 }

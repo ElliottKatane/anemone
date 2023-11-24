@@ -13,7 +13,6 @@ const Navigation = () => {
     logout();
   };
 
-  let disabled = true;
   return (
     <header>
       <div className="nav">
@@ -29,24 +28,19 @@ const Navigation = () => {
               <button className="logout-btn" onClick={handleClick}>
                 Log out
               </button>
-              <Link to={disabled ? "#" : "/personalstats"}>
-                {disabled ? "Mes stats (désactivé)" : "Mes stats"}
-              </Link>
+              {/* <Link to="/personalstats"></Link> */}
             </div>
           )}
-          {!user && (
+          {/* {!user && (
             <div>
-              <Link to={disabled ? "#" : "/login"}>
-                {disabled ? "Login (désactivé)" : "Login"}
-              </Link>
-              <Link to={disabled ? "#" : "/signup"}>
-                {disabled ? "Sign up (désactivé)" : "Signup	"}
-              </Link>
+              <Link to="/login"></Link>
+              <Link to="/signup"></Link>
             </div>
-          )}
+          )} */}
           <Link to="/litterature">Jeu</Link>
           <Link to="/stats">Solutionnaire</Link>
           <Link to="/about">A propos</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
       </div>
     </header>
