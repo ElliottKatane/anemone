@@ -11,7 +11,9 @@ function PersonalStatsPage() {
   useEffect(() => {
     if (user) {
       // Fetch the user's profile data based on their email
-      fetch(`/api/user/profile/${user.email}`)
+      fetch(
+        `https://anemone-backend.onrender.com/api/user/profile/${user.email}`
+      )
         .then((response) => response.json())
         .then((data) => {
           setProfileData(data);

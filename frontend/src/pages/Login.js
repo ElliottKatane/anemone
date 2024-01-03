@@ -33,7 +33,10 @@ const Login = () => {
       {error && <div className="error">{error}</div>}
       <div>
         <p>
-          Vous n'avez pas de compte ? <a href="/signup">Créer un compte</a>
+          Vous n'avez pas de compte ?{" "}
+          <a href="https://anemone-frontend.onrender.com/signup">
+            Créer un compte
+          </a>
         </p>
       </div>
     </form>

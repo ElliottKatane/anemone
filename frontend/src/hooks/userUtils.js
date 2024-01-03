@@ -1,5 +1,5 @@
 export const updateUserScoreMax = async (email, newScore) => {
-  const url = `/api/user/updateScoreMax/${email}`;
+  const url = `https://anemone-backend.onrender.com/api/user/updateScoreMax/${email}`;
 
   try {
     const response = await fetch(url, {
@@ -24,7 +24,7 @@ export const updateUserScoreMax = async (email, newScore) => {
   }
 };
 export const updateUserDiscoveredVerbs = async (email, newDiscoveredVerbs) => {
-  const url = `/api/user/updateUserDiscoveredVerbs/${email}`;
+  const url = `https://anemone-backend.onrender.com/api/user/updateUserDiscoveredVerbs/${email}`;
 
   try {
     const response = await fetch(url, {
@@ -50,7 +50,7 @@ export const updateUserDiscoveredVerbs = async (email, newDiscoveredVerbs) => {
 };
 
 export function getUserProfile(email) {
-  return fetch(`/api/user/profile/${email}`)
+  return fetch(`https://anemone-backend.onrender.com/api/user/profile/${email}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to fetch user profile");
