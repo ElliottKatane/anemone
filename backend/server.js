@@ -14,13 +14,7 @@ app.use(express.json());
 
 require("dotenv").config({ path: "./config.env" });
 // require("dotenv").config();
-app.use(
-  cors({
-    origin: "https://anemone-alpha.vercel.app",
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 // ejs
 app.set("view engine", "ejs"); // Set EJS as the view engine
@@ -29,15 +23,6 @@ app.use(express.static("public")); // Serve static files from the 'public' folde
 //routes
 app.use("/api/user", userRoutes);
 app.use("/api/verbs", verbRoutes);
-
-// on essaye de dire bonjour
-app.get("/blob", (req, res) => {
-  res.json("Hello");
-});
-// test route
-app.get("/test", (req, res) => {
-  res.send("Test route works!");
-});
 
 mongoose
   .connect(process.env.MONGODB_URI)
