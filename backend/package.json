@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "vercel build",
+    "build": "npm i",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "nodemon server.js"
