@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
+import { Link } from "react-router-dom";
 import "./login.css";
 
 const Signup = () => {
@@ -34,7 +35,7 @@ const Signup = () => {
       {/* disabled={isLoading} parce qu'on ne veut pas envoyer de nouvelle requête tant qu'il y a le chargement d'une autre */}
       <button disabled={isLoading}>Signup</button>
       <p>
-        Vous avez déjà un compte ? <a href="/login">Identifiez-vous</a>
+        Vous avez déjà un compte ? <Link to="/login">Identifiez-vous</Link>
       </p>
       {error && <div className="error">{error}</div>}
     </form>
