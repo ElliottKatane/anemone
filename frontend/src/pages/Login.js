@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import "./login.css";
+import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,10 +34,7 @@ const Login = () => {
       {error && <div className="error">{error}</div>}
       <div>
         <p>
-          Vous n'avez pas de compte ?{" "}
-          <a href="https://anemone-frontend.onrender.com/signup">
-            Créer un compte
-          </a>
+          Vous n'avez pas de compte ? <Link to="/signup">Signup</Link>
         </p>
       </div>
     </form>
